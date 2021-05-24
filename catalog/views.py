@@ -12,6 +12,5 @@ class TestViewSet(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serializer = self.get_serializer(queryset, many=True)
-        # data = {obj['uuid']: obj for obj in serializer.data}
         data = {obj['timestamp']: obj['uuid'] for obj in serializer.data}
         return Response(data)
